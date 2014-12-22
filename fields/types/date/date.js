@@ -63,8 +63,14 @@ module.exports = Field.create({
 		} else {
 			input = (
 				<div className={fieldClassName}>
-					<InputDate ref="dateInput" name={this.props.path} format={this.inputFormat} value={this.state.value} onChange={this.valueChanged} />
-					<button type="button" className="btn btn-default btn-set-today" onClick={this.setToday}>Today</button>
+					<div className="form-row">
+						<div className="col-xs-5">
+							<InputDate ref="dateInput" name={this.props.path} format={this.inputFormat} value={this.state.value} onChange={this.valueChanged} />
+						</div>
+						<div className="col-xs-2">
+							<button type="button" className="btn btn-default btn-block btn-set-today" onClick={this.setToday}>Today</button>
+						</div>
+					</div>
 				</div>
 			);
 		}
