@@ -25,7 +25,7 @@
 .form-indent,
 .field-ui .row,
 #signin-form .row {
-	margin-top: @input-vspacing;
+	margin-top: @field-row-gutter;
 }
 
 
@@ -33,7 +33,7 @@
 // I usually house controls like buttons aswell as the input
 
 .field-item {
-	margin-bottom: floor(@input-vspacing / 2);
+	margin-bottom: @field-row-gutter;
 	position: relative;
 }
 .field-item-button {
@@ -195,11 +195,11 @@ label.checkbox {
 // columns separated fields
 // need space when the form collapses
 .form-row {
-	.col-spacing(0,0 5px);
-	.make-row(10px);
+	.col-spacing(0,0 (@field-column-gutter / 2));
+	.make-row(@field-column-gutter);
 	
-	@media (max-width: @screen-sm) {
-		.col-spacing(0 0 .8em,0 5px);
+	@media (max-width: @screen-xs-max) {
+		.col-spacing(0 0 .8em,0 (@field-column-gutter / 2));
 	}
 }
 
@@ -229,10 +229,11 @@ label.checkbox {
 .field-size-medium {
 	.make-sm-column(5);
 	.make-md-column(4);
+	.make-lg-column(3);
 }
 .field-size-small {
-	.make-sm-column(3);
-	.make-md-column(2);
+	.make-sm-column(2);
+	.make-lg-column(1);
 }
 .field-size-full {
 	.make-sm-column(9);
@@ -328,13 +329,15 @@ label.checkbox {
 }
 
 
-// Date
+// Date & Time
 
-.field-type-date .form-control,
-.field-type-datetime .form-control{
-	display: inline-block;
-	margin-right: 5px;
-	width: auto;
+.field-type-date,
+.field-type-datetime {
+	position: relative;
+
+	.form-control {
+		width: 100%;
+	}
 }
 
 
@@ -371,10 +374,6 @@ label.checkbox {
 // ------------------------------
 
 @media (min-width: @screen-md) {
-	.field-type-date .form-control,
-	.field-type-datetime .form-control {
-		width: 165px;
-	}
 	.btn-goto-linked-item {
 		.translate(100%, 0);
 		display: block;
